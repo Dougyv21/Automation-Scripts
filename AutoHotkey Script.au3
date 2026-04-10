@@ -1,0 +1,22 @@
+#NoEnv
+#Persistent
+SetBatchLines, -1
+CoordMode, Mouse, Screen
+
+interval := 30000     ; 30 seconds
+moveRange := 5        ; pixels to move (+/-)
+
+SetTimer, DoAction, %interval%
+return
+
+DoAction:
+    MouseGetPos, x, y
+    Random, dx, -moveRange, moveRange
+    Random, dy, -moveRange, moveRange
+
+    MouseMove, x + dx, y + dy, 0
+    Click
+return
+
+; Emergency stop
+Esc::ExitApp
